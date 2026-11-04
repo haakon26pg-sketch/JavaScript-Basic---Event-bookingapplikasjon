@@ -1,9 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- favicon -->
     <link
         rel="icon"
         href="images/gamingcon logo.svg"
@@ -16,458 +19,523 @@
 
     <script src="script.js" defer></script>
 </head>
+
 <body>
-    
-    
-<!-- HEADER -->
 
-<header class="site-header">
+    <!-- header -->
+    <header class="site-header">
 
-    <div class="header-inner">
+        <div class="header-inner">
 
-        <!-- LOGO AND BRAND -->
-        <a class="brand" href="index.html">
+            <!-- logo and brand -->
+            <a class="brand" href="index.html">
 
-            <!-- Logo backdrop -->
-            <span class="logo-backdrop">
+                <span class="logo-backdrop">
 
-                <img
-                    class="brand-logo"
-                    src="images/gamingcon logo.svg"
-                    alt="GamingCon Logo"
-                >
+                    <img
+                        class="brand-logo"
+                        src="images/gamingcon logo.svg"
+                        alt="GamingCon Logo"
+                    >
 
-            </span>
+                </span>
 
-            <!-- Brand name -->
-            <span class="brand-name">
-                GamingCon 2026 Nordics
-            </span>
+                <span class="brand-name">
+                    GamingCon 2026 Nordics
+                </span>
 
-        </a>
-
-
-        <!-- NAVIGATION -->
-        <nav class="main-nav">
-
-            <a href="#booking-view" id="dates-nav">
-                Dates &amp; Events →
             </a>
 
-            <a href="#booking-view" id="tickets-nav">
-                Booking &amp; Tickets →
-            </a>
 
-        </nav>
+            <!-- navigation -->
+            <nav class="main-nav">
 
-    </div>
+                <a href="#booking-view" id="dates-nav">
+                    Dates &amp; Events →
+                </a>
 
-</header>
+                <a href="#booking-view" id="tickets-nav">
+                    Booking &amp; Tickets →
+                </a>
 
-<!-- Main page -->
-
-<!-- MAIN PAGE -->
-<main class="home-main" id="information">
-
-    <!-- ==================================
-         1. INITIAL HOMEPAGE
-    =================================== -->
-
-    <section id="home-view">
-
-        <div class="event-grid">
-
-            <!-- FIRST EVENT CARD -->
-            <article class="event-card">
-
-                <img
-                    class="event-image"
-                    src="images/Convention.jpg"
-                    alt="Gaming convention entrance"
-                >
-
-                <div class="event-content">
-
-                    <p class="event-intro">
-                        Welcome to the biggest<br>
-                        gaming convention in the nordics!
-                    </p>
-
-                    <hr class="card-divider">
-
-                    <p>
-                        GamingCon 2026 comes to<br>
-                        Nova Spektrum, Lillestrøm this fall!
-                    </p>
-
-                    <a
-                        class="card-link"
-                        href="#booking-view"
-                        id="event-card-link">
-                        Dates &amp; Events
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- SECOND EVENT CARD -->
-            <article class="event-card">
-
-                <img
-                    class="event-image"
-                    src="images/main stage.jpg"
-                    alt="Gaming convention stage"
-                >
-
-                <div class="event-content">
-
-                    <p class="event-intro">
-                        Celebrating Nordic creators big and small<br>
-                        as well as studios from around the globe!
-                    </p>
-
-                    <hr class="card-divider">
-
-                    <p>
-                        World premieres, updates, demos and more<br>
-                        Opening Night Live livestreamed on ↓
-                    </p>
-
-                    <p class="card-link">
-                        Twitch.tv/GamingCon
-                    </p>
-
-                </div>
-
-            </article>
+            </nav>
 
         </div>
 
-    </section>
+    </header>
 
 
-    <!-- ==================================
-         2. BOOKING & EVENTS VIEW
-    =================================== -->
+    <!-- main page -->
+    <main class="home-main" id="information">
 
-    <section id="booking-view" hidden>
+        <!-- 1. initial homepage -->
+        <section id="home-view">
 
-        <div class="booking-grid">
+            <div class="event-grid">
 
-            <!-- LEFT CARD: TICKETS & PRICES -->
-            <section class="booking-card" id="tickets">
+                
 
-                <h2>Tickets &amp; Prices</h2>
+                <!-- first event card -->
+                <article class="event-card">
 
-                <hr class="booking-divider">
+                    <img
+                        class="event-image"
+                        src="images/Convention.jpg"
+                        alt="Gaming convention entrance"
+                    >
 
-                <!-- TICKET TYPES -->
-                <ul class="ticket-list" id="ticket-options">
+                    <div class="event-content">
 
-                    <li>
-                        <button
-                            type="button"
-                            class="ticket-option"
-                            data-ticket="Basic Day Pass"
-                            data-price="400">
-                            Basic Day Pass - 400,-
-                        </button>
-                    </li>
+                        <p class="event-intro">
+                            Welcome to the biggest<br>
+                            gaming convention in the nordics!
+                        </p>
 
-                    <li>
-                        <button
-                            type="button"
-                            class="ticket-option"
-                            data-ticket="All Inclusive Day Pass"
-                            data-price="600">
-                            All Inclusive Day Pass - 600,-
-                        </button>
-                    </li>
+                        <hr class="card-divider">
 
-                    <li>
-                        <button
-                            type="button"
-                            class="ticket-option"
-                            data-ticket="VIP Day Pass"
-                            data-price="700">
-                            VIP Day Pass - 700,-
-                        </button>
-                    </li>
+                        <p>
+                            GamingCon 2026 comes to<br>
+                            Nova Spektrum, Lillestrøm this fall!
+                        </p>
 
-                    <li>
-                        <button
-                            type="button"
-                            class="ticket-option"
-                            data-ticket="Basic Week Pass"
-                            data-price="600">
-                            Basic Week Pass - 600,-
-                        </button>
-                    </li>
+                        <a
+                            class="card-link"
+                            href="#booking-view"
+                            id="event-card-link">
+                            Dates &amp; Events
+                        </a>
 
-                    <li>
-                        <button
-                            type="button"
-                            class="ticket-option"
-                            data-ticket="All Inclusive Week Pass"
-                            data-price="1000">
-                            All Inclusive Week Pass - 1000,-
-                        </button>
-                    </li>
+                    </div>
 
-                    <li>
-                        <button
-                            type="button"
-                            class="ticket-option"
-                            data-ticket="VIP Week Pass"
-                            data-price="1300">
-                            VIP Week Pass - 1300,-
-                        </button>
-                    </li>
-
-                </ul>
+                </article>
 
 
-                <!-- SELECTED TICKET -->
-                <p id="ticket-summary" class="ticket-summary" hidden></p>
+                <!-- second event card -->
+                <article class="event-card">
 
+                    <img
+                        class="event-image"
+                        src="images/main stage.jpg"
+                        alt="Gaming convention stage"
+                    >
 
-                <!-- BOOKING FORM -->
-                <form id="booking-form" class="booking-form" novalidate>
+                    <div class="event-content">
 
-                    <!-- STAGE 1: SELECT TICKET TYPE -->
-                    <div id="stage-prompt" class="booking-stage">
+                        <p class="event-intro">
+                            Celebrating Nordic creators big and small<br>
+                            as well as studios from around the globe!
+                        </p>
 
-                        <p class="step-placeholder">
-                            Select Ticket Type
+                        <hr class="card-divider">
+
+                        <p>
+                            World premieres, updates, demos and more<br>
+                            Opening Night Live livestreamed on ↓
+                        </p>
+
+                        <p class="card-link">
+                            <!-- twitch livestream link -->
+<a
+    class="card-link twitch-link"
+    href="https://www.twitch.tv/gamingcon"
+    target="_blank"
+    rel="noopener noreferrer">
+
+    <img
+        class="twitch-icon"
+        src="images/twitch-icon.png"
+        alt=""
+    >
+
+    <span>Twitch.tv/GamingCon</span>
+
+</a>
                         </p>
 
                     </div>
 
+                </article>
 
-                    <!-- STAGE 2: TICKET AMOUNT -->
-                    <div id="stage-amount" class="booking-stage" hidden>
+            </div>
 
-                        <label for="ticket-amount" class="step-label">
-                            Ticket Amount (Max 5)
-                        </label>
+        </section>
 
-                        <div class="step-input-row">
 
-                            <select
-                                id="ticket-amount"
-                                class="step-input"
-                                required>
+        <!-- 2. booking and events view -->
+        <section id="booking-view" hidden>
 
-                                <option value="">Select amount</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
+            <div class="booking-grid">
 
-                            </select>
+                <!-- left card: tickets and prices -->
+                <section class="booking-card" id="tickets">
 
-                            <button type="submit" class="step-enter">
-                                Enter
+                    <h2>Tickets &amp; Prices</h2>
+
+                    <hr class="booking-divider">
+
+
+                    <!-- ticket types -->
+                    <ul class="ticket-list" id="ticket-options">
+
+                        <li>
+                            <button
+                                type="button"
+                                class="ticket-option"
+                                data-ticket="Basic Day Pass"
+                                data-price="400"
+                                aria-pressed="false">
+                                Basic Day Pass - 400,-
                             </button>
+                        </li>
 
-                        </div>
-
-                    </div>
-
-
-                    <!-- STAGE 3: EMAIL ADDRESS -->
-                    <div id="stage-email" class="booking-stage" hidden>
-
-                        <label for="customer-email" class="step-label">
-                            Enter Email Address
-                        </label>
-
-                        <div class="step-input-row">
-
-                            <input
-                                type="email"
-                                id="customer-email"
-                                class="step-input"
-                                placeholder="Enter your email"
-                                autocomplete="email"
-                                required
-                            >
-
-                            <button type="submit" class="step-enter">
-                                Enter
+                        <li>
+                            <button
+                                type="button"
+                                class="ticket-option"
+                                data-ticket="All Inclusive Day Pass"
+                                data-price="600"
+                                aria-pressed="false">
+                                All Inclusive Day Pass - 600,-
                             </button>
+                        </li>
 
-                        </div>
-
-                    </div>
-
-
-                    <!-- STAGE 4: FULL NAME -->
-                    <div id="stage-name" class="booking-stage" hidden>
-
-                        <label for="customer-name" class="step-label">
-                            Enter Full Name
-                        </label>
-
-                        <div class="step-input-row">
-
-                            <input
-                                type="text"
-                                id="customer-name"
-                                class="step-input"
-                                placeholder="Enter your full name"
-                                autocomplete="name"
-                                required
-                            >
-
-                            <button type="submit" class="step-enter">
-                                Enter
+                        <li>
+                            <button
+                                type="button"
+                                class="ticket-option"
+                                data-ticket="VIP Day Pass"
+                                data-price="700"
+                                aria-pressed="false">
+                                VIP Day Pass - 700,-
                             </button>
+                        </li>
 
-                        </div>
+                        <li>
+                            <button
+                                type="button"
+                                class="ticket-option"
+                                data-ticket="Basic Week Pass"
+                                data-price="600"
+                                aria-pressed="false">
+                                Basic Week Pass - 600,-
+                            </button>
+                        </li>
 
-                    </div>
+                        <li>
+                            <button
+                                type="button"
+                                class="ticket-option"
+                                data-ticket="All Inclusive Week Pass"
+                                data-price="1000"
+                                aria-pressed="false">
+                                All Inclusive Week Pass - 1000,-
+                            </button>
+                        </li>
+
+                        <li>
+                            <button
+                                type="button"
+                                class="ticket-option"
+                                data-ticket="VIP Week Pass"
+                                data-price="1300"
+                                aria-pressed="false">
+                                VIP Week Pass - 1300,-
+                            </button>
+                        </li>
+
+                    </ul>
 
 
-                    <!-- STAGE 5: ORDER CONFIRMED -->
-                    <div
-                        id="stage-confirmed"
-                        class="booking-stage"
-                        role="status"
+                    <!-- selected ticket -->
+                    <p
+                        id="ticket-summary"
+                        class="ticket-summary"
                         hidden>
+                    </p>
 
-                        <div class="confirmation-bar">
 
-                            <svg
-                                class="confirmation-icon"
-                                viewBox="0 0 52 52"
-                                aria-hidden="true">
+                    <!-- booking form -->
+                    <form
+                        id="booking-form"
+                        class="booking-form"
+                        novalidate>
 
-                                <circle
-                                    cx="26"
-                                    cy="26"
-                                    r="22"
-                                    fill="#56C98D"
-                                />
 
-                                <path
-                                    d="m15 26 8 8 15-16"
-                                    fill="none"
-                                    stroke="#0D131F"
-                                    stroke-width="5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                />
+                        <!-- stage 1: select ticket type -->
+                        <div
+                            id="stage-prompt"
+                            class="booking-stage">
 
-                            </svg>
-
-                            <span>Order Confirmed</span>
+                            <p class="step-placeholder">
+                                Select Ticket Type
+                            </p>
 
                         </div>
 
-                    </div>
 
-                    <!-- ERROR MESSAGES -->
-                    <p id="step-error" class="step-error" hidden></p>
+                        <!-- stage 2: ticket amount -->
+                        <div
+                            id="stage-amount"
+                            class="booking-stage"
+                            hidden>
 
-                </form>
+                            <label
+                                for="ticket-amount"
+                                class="step-label">
+                                Ticket Amount (Max 5)
+                            </label>
 
-            </section>
+                            <div class="step-input-row">
 
+                                <select
+                                    id="ticket-amount"
+                                    class="step-input"
+                                    required>
 
-            <!-- RIGHT CARD: DATES & EVENTS -->
-            <section class="booking-card schedule-card" id="dates-events">
+                                    <option value="">
+                                        Select amount
+                                    </option>
 
-                <h2>Dates &amp; Events</h2>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
 
-                <img
-                    class="calendar-icon"
-                    src="images/calendar.svg"
-                    alt=""
-                >
+                                </select>
 
-                <hr class="booking-divider">
+                                <button
+                                    type="submit"
+                                    class="step-enter">
+                                    Enter
+                                </button>
 
-                <ol class="schedule-list">
+                            </div>
 
-                    <li>
-                        5th of October →
-                        Doors Open 9.30 →
-                        Opening Night Live 18.00
-                    </li>
-
-                    <li>
-                        6th of October →
-                        Demos and Booths Available 10.00
-                    </li>
-
-                    <li>
-                        7th of October →
-                        Nordic Creators Showcase live
-                        at the Main Stage 16.00
-                    </li>
-
-                    <li>
-                        8th of October →
-                        Accessibility in gaming 15.00 →
-                        Cosplay contest 17.00 →
-                        GamingCon 2026 closing event 19.00
-                    </li>
-
-                </ol>
-
-            </section>
-
-        </div>
-
-    </section>
+                        </div>
 
 
-    <!-- ==================================
-         3. FINAL CONFIRMATION VIEW
-    =================================== -->
+                        <!-- stage 3: email address -->
+                        <div
+                            id="stage-email"
+                            class="booking-stage"
+                            hidden>
 
-    <section id="success-view" class="booking-success" hidden>
+                            <label
+                                for="customer-email"
+                                class="step-label">
+                                Enter Email Address
+                            </label>
 
-        <h1 tabindex="-1">
-            Looking forward to see you!
-        </h1>
+                            <div class="step-input-row">
 
-        <p id="success-recap"></p>
+                                <input
+                                    type="email"
+                                    id="customer-email"
+                                    class="step-input"
+                                    placeholder="Enter your email"
+                                    autocomplete="email"
+                                    required
+                                >
 
-    </section>
+                                <button
+                                    type="submit"
+                                    class="step-enter">
+                                    Enter
+                                </button>
 
-</main>
+                            </div>
+
+                        </div>
 
 
-    <!-- Footer -->
-     <footer class="site-footer">
+                        <!-- stage 4: full name -->
+                        <div
+                            id="stage-name"
+                            class="booking-stage"
+                            hidden>
 
-            <div class="footer-inner">
+                            <label
+                                for="customer-name"
+                                class="step-label">
+                                Enter Full Name
+                            </label>
 
-                    <p class="footer-brand">
-                        GamingCon&copy;
-                    </p>
+                            <div class="step-input-row">
 
-                    <p class="footer-address">
-                        Messeveien, 8 2004 LilleStrøm
-                    </p>
+                                <input
+                                    type="text"
+                                    id="customer-name"
+                                    class="step-input"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                    required
+                                >
 
-                    <form class="newsletter" action ="#" method="get">
-                        <label class="visually-hidden"
-                        for="newsletter-email">
-                        Email for event
-                    </label>
+                                <button
+                                    type="submit"
+                                    class="step-enter">
+                                    Enter
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- stage 5: order confirmed -->
+                        <div
+                            id="stage-confirmed"
+                            class="booking-stage"
+                            role="status"
+                            hidden>
+
+                            <div class="confirmation-bar">
+
+                                <svg
+                                    class="confirmation-icon"
+                                    viewBox="0 0 52 52"
+                                    aria-hidden="true">
+
+                                    <circle
+                                        cx="26"
+                                        cy="26"
+                                        r="22"
+                                        fill="#56c98d"
+                                    />
+
+                                    <path
+                                        d="m15 26 8 8 15-16"
+                                        fill="none"
+                                        stroke="#0d131f"
+                                        stroke-width="5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+
+                                </svg>
+
+                                <span>
+                                    Order Confirmed
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- error messages -->
+                        <p
+                            id="step-error"
+                            class="step-error"
+                            role="alert"
+                            hidden>
+                        </p>
+
+                    </form>
+
+                </section>
+
+
+                <!-- right card: dates and events -->
+                <section
+                    class="booking-card schedule-card"
+                    id="dates-events">
+
+                    <h2>Dates &amp; Events</h2>
+
+                    <img
+                        class="calendar-icon"
+                        src="images/calendar.svg"
+                        alt=""
+                    >
+
+                    <hr class="booking-divider">
+
+                    <ol class="schedule-list">
+
+                        <li>
+                            5th of October →
+                            Doors Open 9.30 →
+                            Opening Night Live 18.00
+                        </li>
+
+                        <li>
+                            6th of October →
+                            Demos and Booths Available 10.00
+                        </li>
+
+                        <li>
+                            7th of October →
+                            Nordic Creators Showcase live
+                            at the Main Stage 16.00
+                        </li>
+
+                        <li>
+                            8th of October →
+                            Accessibility in gaming 15.00 →
+                            Cosplay contest 17.00 →
+                            GamingCon 2026 closing event 19.00
+                        </li>
+
+                    </ol>
+
+                </section>
+
+            </div>
+
+        </section>
+
+
+        <!-- 3. final confirmation view -->
+        <section
+            id="success-view"
+            class="booking-success"
+            aria-live="polite"
+            hidden>
+
+            <h1 tabindex="-1">
+                Looking forward to see you!
+            </h1>
+
+            <p id="success-recap"></p>
+
+        </section>
+
+    </main>
+
+
+    <!-- footer -->
+    <footer class="site-footer">
+
+        <div class="footer-inner">
+
+            <p class="footer-brand">
+                GamingCon&copy;
+            </p>
+
+            <p class="footer-address">
+                Messeveien 8, 2004 Lillestrøm
+            </p>
+
+            <!-- newsletter -->
+            <form
+                class="newsletter"
+                action="#"
+                method="get">
+
+                <label
+                    class="visually-hidden"
+                    for="newsletter-email">
+                    Email for event updates
+                </label>
 
                 <input
-                id="newsletter-email"
-                type="email"
-                name="email"
-                placeholder="Enter your email here for updates on GamingCon.."
-                required
+                    id="newsletter-email"
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email here for updates on GamingCon.."
+                    required
                 >
 
                 <button type="submit">
@@ -479,10 +547,10 @@
             <p class="footer-links">
                 Support | About Us | Jobs
             </p>
-                    
-            </div>
 
-     </footer>
-    
+        </div>
+
+    </footer>
+
 </body>
 </html>

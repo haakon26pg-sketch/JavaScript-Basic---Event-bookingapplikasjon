@@ -1,56 +1,50 @@
 
-/* ==========================================
-   GAMINGCON 2026 - STYLESHEET
-========================================== */
+/* gamingcon 2026 stylesheet */
 
-/* GOOGLE FONTS */
+/* google fonts */
 
 @import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600;700&family=Kdam+Thmor+Pro&display=swap');
 
 
-/* ==========================================
-   ROOT VARIABLES
-========================================== */
+/* root variables */
 
 :root {
 
-    /* Background colors */
-    --bg-primary: #1B263B;
-    --bg-secondary: #415A77;
-    --bg-header: #0D131F;
+    /* background colors */
+    --bg-primary: #1b263b;
+    --bg-secondary: #415a77;
+    --bg-header: #0d131f;
 
-    /* Accent colors */
-    --accent-primary: #FFB703;
-    --accent-secondary: #C17CFF;
+    /* accent colors */
+    --accent-primary: #ffb703;
+    --accent-secondary: #c17cff;
 
-    /* Text colors */
-    --text-heading: #F4F4F6;
-    --text-primary: #E0E1DD;
-    --text-secondary: #8D99AE;
+    /* text colors */
+    --text-heading: #f4f4f6;
+    --text-primary: #e0e1dd;
+    --text-secondary: #8d99ae;
 
-    /* Fonts */
+    /* fonts */
     --font-logo: "Kdam Thmor Pro", sans-serif;
     --font-body: "Jura", sans-serif;
 
-    /* Layout */
+    /* layout */
     --header-height: 126px;
     --footer-height: 126px;
 
-    /* Cards */
+    /* cards */
     --card-width: 521px;
     --card-height: 571px;
     --card-gap: 152px;
 
-    /* Border radius */
+    /* border radius */
     --radius-card: 30px;
     --radius-button: 15px;
 
 }
 
 
-/* ==========================================
-   GLOBAL RESET
-========================================== */
+/* css global reset */
 
 * {
     box-sizing: border-box;
@@ -91,16 +85,14 @@ button {
 }
 
 
-/* HIDE INACTIVE VIEWS */
+/* hide inactive views */
 
 [hidden] {
     display: none !important;
 }
 
 
-/* ==========================================
-   HEADER
-========================================== */
+/* header */
 
 .site-header {
     min-height: var(--header-height);
@@ -128,9 +120,7 @@ button {
 }
 
 
-/* ==========================================
-   LOGO AND BRAND
-========================================== */
+/* logo and brand */
 
 .brand {
     display: flex;
@@ -140,11 +130,10 @@ button {
 }
 
 
-/* LOGO BACKDROP */
+/* logo backdrop */
 
 .logo-backdrop {
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -155,10 +144,10 @@ button {
 
     border-radius: 15px;
 
-    /* Subtle background */
+    /* gold backdrop */
     background: var(--accent-primary);
 
-    /* Soft shadow for depth */
+    /* subtle shadow */
     box-shadow:
         0 4px 10px rgba(0, 0, 0, 0.3);
 
@@ -168,7 +157,7 @@ button {
 }
 
 
-/* LOGO IMAGE */
+/* logo image */
 
 .brand-logo {
     width: 65px;
@@ -176,12 +165,12 @@ button {
 
     object-fit: contain;
 
-    /* Preserve original SVG colors */
+    /* preserve original svg colors */
     filter: none;
 }
 
 
-/* SUBTLE LOGO HOVER */
+/* subtle logo hover */
 
 .brand:hover .logo-backdrop {
     transform: translateY(-2px);
@@ -191,7 +180,7 @@ button {
 }
 
 
-/* BRAND NAME */
+/* brand name */
 
 .brand-name {
     font-family: var(--font-logo);
@@ -206,16 +195,14 @@ button {
 }
 
 
-/* BRAND NAME HOVER */
+/* brand name hover */
 
 .brand:hover .brand-name {
     color: var(--accent-primary);
 }
 
 
-/* ==========================================
-   NAVIGATION
-========================================== */
+/* navigation */
 
 .main-nav {
     display: flex;
@@ -235,14 +222,14 @@ button {
 }
 
 
-/* NAVIGATION HOVER */
+/* navigation hover effect */
 
 .main-nav a:hover {
     color: var(--accent-primary);
 }
 
 
-/* DIVIDER BETWEEN NAVIGATION LINKS */
+/* divider between navigation links */
 
 .main-nav a + a {
     border-left: 1px solid var(--text-secondary);
@@ -251,9 +238,7 @@ button {
 }
 
 
-/* ==========================================
-   ACCESSIBILITY
-========================================== */
+/* accessibility */
 
 a:focus-visible,
 button:focus-visible {
@@ -262,7 +247,212 @@ button:focus-visible {
 }
 
 
-/* REDUCED MOTION */
+/* homepage main */
+
+.home-main {
+    min-height: 772px;
+
+    padding: 101px 24px 100px;
+}
+
+
+/* event grid */
+
+.event-grid {
+    display: grid;
+
+    grid-template-columns: repeat(
+        2,
+        minmax(0, var(--card-width))
+    );
+
+    justify-content: center;
+
+    gap: var(--card-gap);
+
+    max-width: 1194px;
+
+    margin: 0 auto;
+}
+
+
+/* event card styling */
+
+.event-card {
+    min-height: var(--card-height);
+
+    background-color: var(--bg-secondary);
+
+    border-radius: var(--radius-card);
+
+    overflow: hidden;
+
+    /* default golden shadow */
+    box-shadow: 0 4px 4px var(--accent-primary);
+
+    /* smooth transitions */
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* event card hover */
+
+.event-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.35),
+        0 0 18px var(--accent-primary),
+        0 0 30px rgba(193, 124, 255, 0.25);
+}
+
+/* event images */
+
+.event-image {
+    width: 100%;
+    height: 377px;
+
+    object-fit: cover;
+
+    background-color: var(--bg-header);
+
+    box-shadow:
+        0 4px 4px var(--accent-secondary);
+}
+
+
+/* event card content */
+
+.event-content {
+    min-height: 194px;
+
+    padding: 12px 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+    align-items: center;
+
+    gap: 8px;
+
+    text-align: center;
+
+    font-size: 26px;
+    font-weight: 500;
+
+    line-height: 1.05;
+    letter-spacing: -0.08em;
+}
+
+
+/* remove default paragraph margins */
+
+.event-content p {
+    margin: 0;
+}
+
+
+/* intro text */
+
+.event-intro {
+    color: var(--text-heading);
+
+    font-weight: 600;
+}
+
+
+/* card divider */
+
+.card-divider {
+    display: block;
+
+    width: 90%;
+    height: 1px;
+
+    margin:0;
+    padding: 0;
+
+    border: none;
+    background-color: var(--accent-primary);
+
+    flex-shrink: 0;
+}
+
+/* card links */
+
+.card-link {
+    color: var(--text-heading);
+
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+}
+
+a.card-link:hover {
+    color: var(--accent-primary);
+}
+
+/* twitch link styling */
+
+.twitch-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+/* twitch icon */
+
+.twitch-icon {
+    width: 28px;
+    height: 28px;
+
+    object-fit: contain;
+    flex-shrink: 0;
+
+    transition: transform 0.2s ease;
+}
+
+/* twitch icon hover */
+
+.twitch-link:hover .twitch-icon {
+    transform: scale(1.15);
+}
+
+a.card-link:hover {
+    color: var(--accent-primary);
+}
+
+
+/* smaller screens */
+
+@media (max-width: 850px) {
+
+    .home-main {
+        padding: 45px 20px 55px;
+    }
+
+    .event-grid {
+        grid-template-columns: minmax(0, 521px);
+
+        gap: 35px;
+    }
+
+    .event-image {
+        height: min(65vw, 377px);
+    }
+
+    .event-content {
+        font-size: clamp(18px, 4vw, 26px);
+    }
+
+}
+
+
+/* reduced motion accessibility */
 
 @media (prefers-reduced-motion: reduce) {
 
