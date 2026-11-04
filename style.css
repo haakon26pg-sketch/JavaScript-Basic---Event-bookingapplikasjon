@@ -1,0 +1,279 @@
+
+/* ==========================================
+   GAMINGCON 2026 - STYLESHEET
+========================================== */
+
+/* GOOGLE FONTS */
+
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600;700&family=Kdam+Thmor+Pro&display=swap');
+
+
+/* ==========================================
+   ROOT VARIABLES
+========================================== */
+
+:root {
+
+    /* Background colors */
+    --bg-primary: #1B263B;
+    --bg-secondary: #415A77;
+    --bg-header: #0D131F;
+
+    /* Accent colors */
+    --accent-primary: #FFB703;
+    --accent-secondary: #C17CFF;
+
+    /* Text colors */
+    --text-heading: #F4F4F6;
+    --text-primary: #E0E1DD;
+    --text-secondary: #8D99AE;
+
+    /* Fonts */
+    --font-logo: "Kdam Thmor Pro", sans-serif;
+    --font-body: "Jura", sans-serif;
+
+    /* Layout */
+    --header-height: 126px;
+    --footer-height: 126px;
+
+    /* Cards */
+    --card-width: 521px;
+    --card-height: 571px;
+    --card-gap: 152px;
+
+    /* Border radius */
+    --radius-card: 30px;
+    --radius-button: 15px;
+
+}
+
+
+/* ==========================================
+   GLOBAL RESET
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+
+    font-family: var(--font-body);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* HIDE INACTIVE VIEWS */
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.site-header {
+    min-height: var(--header-height);
+
+    background-color: var(--bg-header);
+
+    border: 2px solid var(--accent-primary);
+
+    box-shadow: 0 4px 4px var(--accent-primary);
+}
+
+.header-inner {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    max-width: 1394px;
+    min-height: 122px;
+
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* ==========================================
+   LOGO AND BRAND
+========================================== */
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    gap: 30px;
+}
+
+
+/* LOGO BACKDROP */
+
+.logo-backdrop {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 75px;
+    height: 75px;
+
+    flex-shrink: 0;
+
+    border-radius: 15px;
+
+    /* Subtle background */
+    background: var(--accent-primary);
+
+    /* Soft shadow for depth */
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.3);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* LOGO IMAGE */
+
+.brand-logo {
+    width: 65px;
+    height: 65px;
+
+    object-fit: contain;
+
+    /* Preserve original SVG colors */
+    filter: none;
+}
+
+
+/* SUBTLE LOGO HOVER */
+
+.brand:hover .logo-backdrop {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+
+/* BRAND NAME */
+
+.brand-name {
+    font-family: var(--font-logo);
+
+    font-size: clamp(24px, 3.5vw, 50px);
+
+    letter-spacing: -0.08em;
+
+    white-space: nowrap;
+
+    transition: color 0.3s ease;
+}
+
+
+/* BRAND NAME HOVER */
+
+.brand:hover .brand-name {
+    color: var(--accent-primary);
+}
+
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+.main-nav {
+    display: flex;
+    align-items: center;
+
+    gap: 36px;
+}
+
+.main-nav a {
+    font-size: clamp(20px, 3vw, 45px);
+
+    letter-spacing: -0.08em;
+
+    white-space: nowrap;
+
+    transition: color 0.2s ease;
+}
+
+
+/* NAVIGATION HOVER */
+
+.main-nav a:hover {
+    color: var(--accent-primary);
+}
+
+
+/* DIVIDER BETWEEN NAVIGATION LINKS */
+
+.main-nav a + a {
+    border-left: 1px solid var(--text-secondary);
+
+    padding-left: 36px;
+}
+
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--accent-secondary);
+    outline-offset: 4px;
+}
+
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .logo-backdrop,
+    .brand-name,
+    .main-nav a {
+        transition: none;
+    }
+
+    .brand:hover .logo-backdrop {
+        transform: none;
+    }
+
+}
