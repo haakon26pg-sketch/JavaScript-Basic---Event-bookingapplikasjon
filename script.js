@@ -125,3 +125,153 @@ eventOptions.forEach(function(button) {
         selectEvent(button);
     });
 });
+
+// ticket selecton and dynamic pricing
+
+// select ticket buttons
+
+const ticketOptions = document.querySelectorAll(".ticket-option");
+
+// select booking element
+
+const ticketSummary = document.querySelector("#ticket-summary");
+const ticketAmount = document.querySelector("#ticket-amount");
+const bookingForm = document.querySelector("#booking-form");
+
+// select booking stages
+
+const stagePrompt = document.querySelector("#stage-prompt");
+const stageAmount = document.querySelector("#stage-amount");
+
+// select summary elements
+
+const summaryTicket = document.querySelector("#summary-ticket");
+const summaryQuantity = document.querySelector("#summary-quantity");
+const summaryTotal = document.querySelector("#summary-total");
+
+// store selected ticket and quantity
+
+let selectedTicket = null;
+let ticketQuality = 0;
+
+// function to update ticket summary
+
+function updateTicketSumamry() {
+
+    if (selectedTicket === null) {
+        return;
+    }
+
+    // calculate the total booking price
+
+    const totalPrice = selectedTicket.price * ticketQuantity;
+
+    // update booking summary
+    summaryTicket.textContent = selectedTicket.name;
+
+    summaryTotal.textContent =
+        `${totalPrice.toLocaleString("nb-NO")} NOK`;
+
+    // update the visible ticket selection
+
+   if (ticketQuantity > 0) {
+
+    ticketSummary.textContent =
+        `${selectedTicket.name} x ${ticketQuantity} = ${totalPrice.toLocaleString("nb-NO")} NOK`;
+
+} else {
+
+    ticketSummary.textContent =
+        `${selectedTicket.name} selected - choose ticket amount`;
+
+}
+
+ticketSummary.hidden = false;
+
+}
+
+// function to select ticket
+
+function selectTicket(button) {
+
+    // get ticket information from HTML
+
+    const ticketName = (button.dataset.ticket);
+    const ticketPrice = Number(button.dataset.price);
+
+    // save ticket info as object
+    selectedTicket = {
+        name: ticketName,
+        price: ticketPrice
+    };
+
+    // highlight selectected ticket
+    ticketOptions.forEach(function(option) {
+
+        if (option === button) {
+
+            option.setAttribute("aria-pressed", "true");
+   
+        } else {
+
+            option.setAttribute("aria-pressed", "false");
+        }
+    });
+
+    // show the ticket amount staged
+    stagePrompt.hidden = true;
+    stageAmount.hidden = false;
+
+    // preserve the current quantity if one is selected
+    ticketQuantity = Number(ticketAmount.value) || 0;
+
+    // update prices
+    updateTicketSummary();
+}
+
+// add click to ticket buttons
+
+ticketOptions.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        selectTicket(button);
+    });
+
+});
+
+// detect changes in ticket quantity
+
+ticketAmount.addEventListener("change", function() {
+
+    const amount = Number(ticketAmount.value);
+
+    // validate amount between 1-5
+    if (Number.isInteger(amount) && amount >= 1 && amount <= 5) {
+
+        ticketQuantity = amount;
+   
+    } else {
+
+        ticketQuantity = 0;
+    }
+
+    // recalculate total
+
+    updateTicketSummary();
+
+});
+
+// prevent booking form from reloading page
+
+console.log("Booking form:", bookingForm);
+
+bookingForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+});
+
+bookingForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+});
