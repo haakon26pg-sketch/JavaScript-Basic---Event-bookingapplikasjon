@@ -547,3 +547,43 @@ newBookingButton.addEventListener("click", function() {
     showHome();
 
 });
+
+
+// newsletter signup
+
+// select newsletter elements
+
+const newsletterForm = document.querySelector("#newsletter-form");
+const newsletterEmail = document.querySelector("#newsletter-email");
+const newsletterSubmit = document.querySelector("#newsletter-submit");
+const newsletterSuccess = document.querySelector("#newsletter-success");
+
+// handle newsletter signup
+
+newsletterForm.addEventListener("submit", function(event) {
+
+    // prevent page reload
+
+    event.preventDefault();
+
+    // validate email address
+
+    if (!newsletterEmail.checkValidity()) {
+
+        newsletterEmail.reportValidity();
+        return;
+    }
+
+    // hide email field and button
+
+    newsletterEmail.hidden= true;
+    newsletterSubmit.hidden = true;
+
+    // display confirmation with checkmark
+
+    newsletterSuccess.hidden = false;
+
+    // add success styling
+
+    newsletterForm.classList.add("is-subscribed");
+});

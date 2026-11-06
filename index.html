@@ -693,31 +693,48 @@
             </div>
 
 
-            <!-- newsletter -->
-            <form
-                class="newsletter"
-                action="#"
-                method="get">
+<!-- newsletter signup -->
+<form class="newsletter" id="newsletter-form">
 
-                <label
-                    class="visually-hidden"
-                    for="newsletter-email">
-                    Email for event updates
-                </label>
+    <label
+        class="visually-hidden"
+        for="newsletter-email">
+        Email for event updates
+    </label>
 
-                <input
-                    id="newsletter-email"
-                    type="email"
-                    name="email"
-                    placeholder="Enter your email here for updates on GamingCon.."
-                    required
-                >
+    <input
+        id="newsletter-email"
+        type="email"
+        name="email"
+        placeholder="Enter your email here for updates on GamingCon.."
+        required
+    >
 
-                <button type="submit">
-                    Enter
-                </button>
+    <button
+        type="submit"
+        id="newsletter-submit">
+        Enter
+    </button>
 
-            </form>
+    <!-- signup confirmation -->
+    <div
+        id="newsletter-success"
+        class="newsletter-success"
+        role="status"
+        aria-live="polite"
+        hidden>
+
+        <img
+            src="images/checkmark.png"
+            alt=""
+            class="newsletter-checkmark"
+        >
+
+        <span>Thanks for signing up!</span>
+
+    </div>
+
+</form>
 
 
             <!-- footer links -->

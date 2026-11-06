@@ -844,6 +844,81 @@ a.card-link:hover {
     .footer-links { font-size: 22px; white-space: normal; }
 }
 
+/* newsletter signup confirmation */
+
+.newsletter-success {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 8px 14px;
+
+    color: var(--bg-header);
+    font-family: var(--font-body);
+    font-size: 22px;
+    font-weight: 700;
+
+    animation: newsletter-appear 0.4s ease-out;
+
+    /* newsletter checmark icon */
+
+    .newsletter-checkmark {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    /* success state */
+
+    .newsletter.is-subscribed {
+        background-color: var(--text-primary)
+        box-shadow: 0 0 12px rgba(225, 183, 3, 0.35);
+    }
+
+    /* confirmation entrance animation */
+
+    @keyframes newsletter-appear {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        to {
+            opacity: 1;
+            transformm: scale(1);
+        }
+    }
+
+    /* smaller screens */
+
+    @media (max-width: 700px) {
+        .newsletter-success {
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        .newsletter-checkmark {
+            width: 25px;
+            height: 25px;
+        }
+    }
+
+/* accessibility */
+
+@media (prefers-reduced-motion: reduced) {
+    .newsletter-success {
+        animation: none;
+    }
+}
+
+}
+
+
 /* reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
