@@ -1,15 +1,10 @@
-
 /* gamingcon 2026 stylesheet */
 
 /* google fonts */
-
 @import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600;700&family=Kdam+Thmor+Pro&display=swap');
 
-
 /* root variables */
-
 :root {
-
     /* background colors */
     --bg-primary: #1b263b;
     --bg-secondary: #415a77;
@@ -32,7 +27,7 @@
     --header-height: 126px;
     --footer-height: 126px;
 
-    /* cards */
+    /* event cards */
     --card-width: 521px;
     --card-height: 571px;
     --card-gap: 152px;
@@ -40,27 +35,35 @@
     /* border radius */
     --radius-card: 30px;
     --radius-button: 15px;
-
 }
 
-
-/* css global reset */
-
+/* global reset */
 * {
     box-sizing: border-box;
 }
 
 html {
     scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* hide scrollbar but keep scrolling */
+html::-webkit-scrollbar {
+    display: none;
 }
 
 body {
     margin: 0;
     min-width: 320px;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
 
     background-color: var(--bg-primary);
     color: var(--text-primary);
-
     font-family: var(--font-body);
 }
 
@@ -80,58 +83,53 @@ select {
     font: inherit;
 }
 
-button {
+button,
+select {
     cursor: pointer;
 }
 
-
 /* hide inactive views */
-
 [hidden] {
     display: none !important;
 }
 
+/* keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--accent-secondary);
+    outline-offset: 3px;
+}
 
 /* header */
-
 .site-header {
     min-height: var(--header-height);
-
     background-color: var(--bg-header);
-
     border: 2px solid var(--accent-primary);
-
     box-shadow: 0 4px 4px var(--accent-primary);
 }
 
 .header-inner {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-
     gap: 24px;
 
     max-width: 1394px;
     min-height: 122px;
-
     margin: 0 auto;
     padding: 0 20px;
 }
 
-
 /* logo and brand */
-
 .brand {
     display: flex;
     align-items: center;
-
     gap: 30px;
 }
 
-
-/* logo backdrop */
-
+/* gold logo backdrop */
 .logo-backdrop {
     display: flex;
     align-items: center;
@@ -139,263 +137,162 @@ button {
 
     width: 75px;
     height: 75px;
-
     flex-shrink: 0;
-
     border-radius: 15px;
 
-    /* gold backdrop */
-    background: var(--accent-primary);
-
-    /* subtle shadow */
-    box-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.3);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+    background-color: var(--accent-primary);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-
-/* logo image */
 
 .brand-logo {
     width: 65px;
     height: 65px;
-
     object-fit: contain;
-
-    /* preserve original svg colors */
     filter: none;
 }
 
-
-/* subtle logo hover */
-
 .brand:hover .logo-backdrop {
     transform: translateY(-2px);
-
-    box-shadow:
-        0 6px 14px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
 }
-
-
-/* brand name */
 
 .brand-name {
     font-family: var(--font-logo);
-
     font-size: clamp(24px, 3.5vw, 50px);
-
     letter-spacing: -0.08em;
-
     white-space: nowrap;
-
     transition: color 0.3s ease;
 }
-
-
-/* brand name hover */
 
 .brand:hover .brand-name {
     color: var(--accent-primary);
 }
 
-
 /* navigation */
-
 .main-nav {
     display: flex;
     align-items: center;
-
     gap: 36px;
 }
 
 .main-nav a {
     font-size: clamp(20px, 3vw, 45px);
-
     letter-spacing: -0.08em;
-
     white-space: nowrap;
-
     transition: color 0.2s ease;
 }
-
-
-/* navigation hover effect */
 
 .main-nav a:hover {
     color: var(--accent-primary);
 }
 
-
-/* divider between navigation links */
-
 .main-nav a + a {
     border-left: 1px solid var(--text-secondary);
-
     padding-left: 36px;
 }
 
-
-/* accessibility */
-
-a:focus-visible,
-button:focus-visible {
-    outline: 3px solid var(--accent-secondary);
-    outline-offset: 4px;
-}
-
-
-/* homepage main */
-
+/* main layout - footer stays at bottom on tall screens */
 .home-main {
-    min-height: 772px;
-
-    padding: 101px 24px 100px;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 24px;
 }
 
-
-/* event grid */
-
+/* homepage event grid */
 .event-grid {
     display: grid;
-
-    grid-template-columns: repeat(
-        2,
-        minmax(0, var(--card-width))
-    );
-
+    grid-template-columns: repeat(2, minmax(0, var(--card-width)));
     justify-content: center;
-
     gap: var(--card-gap);
-
     max-width: 1194px;
-
     margin: 0 auto;
 }
 
-
-/* event card styling */
-
-.event-card {
-    min-height: var(--card-height);
-
-    background-color: var(--bg-secondary);
-
-    border-radius: var(--radius-card);
-
-    overflow: hidden;
-
-    /* default golden shadow */
-    box-shadow: 0 4px 4px var(--accent-primary);
-
-    /* smooth transitions */
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+/* independent card positions */
+.card-slot {
+    min-width: 0;
 }
 
-/* event card hover */
+.card-slot > .event-card,
+.card-slot > .booking-card {
+    width: 100%;
+}
 
+/* original event cards */
+.event-card {
+    min-height: var(--card-height);
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: 0 4px 4px var(--accent-primary);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* card hover glow */
 .event-card:hover {
     transform: translateY(-6px);
-
     box-shadow:
         0 8px 18px rgba(0, 0, 0, 0.35),
         0 0 18px var(--accent-primary),
         0 0 30px rgba(193, 124, 255, 0.25);
 }
 
-/* event images */
-
 .event-image {
     width: 100%;
     height: 377px;
-
     object-fit: cover;
-
     background-color: var(--bg-header);
-
-    box-shadow:
-        0 4px 4px var(--accent-secondary);
-}
-
-/* event image hover effect */
-
-.event-image {
-    transition: transform: 0.4s ease;
+    box-shadow: 0 4px 4px var(--accent-secondary);
+    transition: transform 0.4s ease;
 }
 
 .event-card:hover .event-image {
     transform: scale(1.025);
 }
 
-/* event card content */
-
 .event-content {
     min-height: 194px;
-
     padding: 12px 15px;
-
     display: flex;
     flex-direction: column;
-
     justify-content: space-around;
     align-items: center;
-
     gap: 8px;
 
     text-align: center;
-
     font-size: 26px;
     font-weight: 500;
-
     line-height: 1.05;
     letter-spacing: -0.08em;
 }
-
-
-/* remove default paragraph margins */
 
 .event-content p {
     margin: 0;
 }
 
-
-/* intro text */
-
 .event-intro {
     color: var(--text-heading);
-
     font-weight: 600;
 }
-
-
-/* card divider */
 
 .card-divider {
     display: block;
-
     width: 90%;
     height: 1px;
-
-    margin:0;
+    margin: 0;
     padding: 0;
-
     border: none;
     background-color: var(--accent-primary);
-
     flex-shrink: 0;
 }
 
-/* card links */
-
 .card-link {
     color: var(--text-heading);
-
     font-weight: 600;
-
     letter-spacing: 0.08em;
 }
 
@@ -403,50 +300,474 @@ a.card-link:hover {
     color: var(--accent-primary);
 }
 
-/* twitch link styling */
-
+/* twitch link */
 .twitch-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     gap: 10px;
 }
-
-/* twitch icon */
 
 .twitch-icon {
     width: 28px;
     height: 28px;
-
     object-fit: contain;
     flex-shrink: 0;
-
     transition: transform 0.2s ease;
 }
-
-/* twitch icon hover */
 
 .twitch-link:hover .twitch-icon {
     transform: scale(1.15);
 }
 
-a.card-link:hover {
+/* footer */
+.site-footer {
+    min-height: var(--footer-height);
+    flex-shrink: 0;
+    width: 100%;
+    background-color: var(--bg-header);
+    border: 2px solid var(--accent-secondary);
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 654px) minmax(0, 1fr);
+    align-items: center;
+    gap: 24px;
+    max-width: 1440px;
+    min-height: 122px;
+    margin: 0 auto;
+    padding: 16px 24px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    justify-self: start;
+    gap: 8px;
+}
+
+.footer-brand {
+    margin: 0;
+    font-size: 33px;
+    font-weight: 600;
+}
+
+.footer-address {
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: -0.08em;
+    line-height: 1.15;
+}
+
+/* centered newsletter field */
+.newsletter {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 58px;
+    justify-self: center;
+    padding: 8px 150px 8px 18px;
+    border-radius: 16px;
+    background-color: var(--text-primary);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+}
+
+.newsletter input {
+    width: 100%;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--bg-header);
+    font-family: var(--font-body);
+    font-size: 22px;
+    letter-spacing: -0.04em;
+}
+
+.newsletter input::placeholder {
+    color: rgba(13, 19, 31, 0.45);
+}
+
+/* newsletter button inside bar */
+.newsletter button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    height: 42px;
+    min-width: 118px;
+    border: none;
+    border-radius: 999px;
+    background-color: var(--accent-primary);
+    color: var(--text-heading);
+    font-family: var(--font-body);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.newsletter button:hover {
+    transform: translateY(-50%) scale(1.03);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.24);
+    filter: brightness(1.03);
+}
+
+.newsletter:focus-within {
+    outline: 2px solid var(--accent-secondary);
+    outline-offset: 3px;
+}
+
+.footer-links {
+    margin: 0;
+    justify-self: end;
+    text-align: right;
+    font-size: clamp(20px, 2vw, 30px);
+    letter-spacing: -0.08em;
+    white-space: nowrap;
+}
+
+/* visually hidden accessible label */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* replacement booking cards */
+.booking-card {
+    min-height: 672px;
+    padding: 24px 28px 32px;
+    background-color: var(--bg-secondary);
+    border-radius: 33px;
+    box-shadow: 0 4px 4px var(--accent-primary);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.booking-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.3),
+        0 0 18px rgba(255, 183, 3, 0.35);
+}
+
+.booking-card h2 {
+    margin: 0 0 20px;
+    color: var(--text-heading);
+    font-size: clamp(30px, 3.3vw, 47px);
+    font-weight: 500;
+    letter-spacing: -0.08em;
+}
+
+.booking-divider {
+    width: 85%;
+    margin: 0 auto 26px;
+    border: none;
+    border-top: 1px solid var(--accent-primary);
+}
+
+.ticket-list,
+.schedule-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ticket-list {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 35px;
+    font-size: clamp(22px, 2.4vw, 34px);
+    font-weight: 500;
+    letter-spacing: -0.08em;
+    text-shadow: 0 4px 4px var(--accent-secondary);
+}
+
+/* ticket selection buttons */
+.ticket-option {
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    font: inherit;
+    letter-spacing: inherit;
+    text-shadow: inherit;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.ticket-option:hover {
+    color: var(--accent-primary);
+    transform: scale(1.02);
+}
+
+.ticket-option[aria-pressed="true"] {
     color: var(--accent-primary);
 }
 
+.ticket-summary {
+    margin: 0 0 15px;
+    color: var(--text-heading);
+    font-size: 20px;
+    font-weight: 600;
+}
 
-/* smaller screens */
+/* dates and events card */
+.schedule-card {
+    position: relative;
+}
 
-@media (max-width: 850px) {
+.calendar-icon {
+    position: absolute;
+    top: 23px;
+    right: 35px;
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
 
+.schedule-list {
+    display: grid;
+    gap: 24px;
+    font-size: clamp(22px, 2.3vw, 33px);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.08em;
+    color: var(--text-heading);
+    text-shadow: 0 4px 4px var(--accent-primary);
+}
+
+/* adjustments for selectable schedule buttons */
+.schedule-card .schedule-list {
+    gap: 12px;
+    font-size: clamp(16px, 1.25vw, 20px);
+    line-height: 1.2;
+    text-shadow: none;
+}
+
+.schedule-card .schedule-list p {
+    margin: 0 0 6px;
+}
+
+.event-option {
+    display: block;
+    width: 100%;
+    padding: 5px 2px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-primary);
+    font: inherit;
+    letter-spacing: inherit;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.event-option:hover,
+.event-option[aria-pressed="true"] {
+    color: var(--accent-primary);
+    background-color: rgba(13, 19, 31, 0.2);
+}
+
+/* selected event display */
+.selected-event-display {
+    margin: 20px 0 0;
+    padding: 12px;
+    border: 1px solid var(--accent-primary);
+    border-radius: 12px;
+    background-color: var(--bg-primary);
+    color: var(--text-heading);
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* booking form */
+.booking-form {
+    width: 100%;
+    max-width: 530px;
+    margin: 0 auto;
+}
+
+.booking-stage {
+    animation: step-appear 0.2s ease-out;
+}
+
+.step-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 58px;
+    margin: 0;
+    border-radius: var(--radius-button);
+    background-color: var(--text-primary);
+    color: var(--bg-header);
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.step-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-heading);
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.step-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.step-input {
+    flex: 1;
+    min-width: 0;
+    height: 58px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: var(--radius-button);
+    background-color: var(--text-primary);
+    color: var(--bg-header);
+    font-size: 22px;
+}
+
+.step-enter {
+    height: 58px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: var(--radius-button);
+    background-color: var(--accent-primary);
+    color: var(--bg-header);
+    font-size: 22px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.step-enter:hover {
+    background-color: var(--accent-secondary);
+}
+
+.step-error {
+    margin-top: 10px;
+    color: #ffe0e4;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* booking summary */
+.booking-summary {
+    margin-bottom: 16px;
+    padding: 15px;
+    border-radius: var(--radius-button);
+    background-color: var(--bg-primary);
+    text-align: left;
+}
+
+.booking-summary p {
+    margin: 0 0 8px;
+    font-size: 18px;
+}
+
+.booking-summary p:last-child {
+    margin-bottom: 0;
+}
+
+.booking-summary strong {
+    color: var(--accent-primary);
+}
+
+/* confirmation bar and final view */
+.confirmation-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 58px;
+    padding: 8px;
+    border-radius: var(--radius-button);
+    background-color: var(--text-primary);
+    color: var(--bg-header);
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.confirmation-icon {
+    width: 44px;
+    height: 44px;
+    animation: check-pop 0.45s ease-out;
+}
+
+.booking-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+    min-height: 570px;
+    padding: 40px 24px;
+    text-align: center;
+    animation: step-appear 0.6s ease-out;
+}
+
+.booking-success h1 {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: clamp(44px, 6.5vw, 100px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.07em;
+    color: var(--text-heading);
+    text-shadow: 0 4px 4px var(--accent-secondary);
+}
+
+.booking-success p {
+    margin: 0;
+    font-size: clamp(20px, 2vw, 28px);
+}
+
+/* animations */
+@keyframes check-pop {
+    0% { opacity: 0; transform: scale(0.2); }
+    65% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes step-appear {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* responsive header */
+@media (max-width: 1350px) {
+    .header-inner {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 18px 20px;
+    }
+
+    .main-nav {
+        justify-content: center;
+    }
+}
+
+/* responsive homepage cards */
+@media (max-width: 1250px) {
     .home-main {
         padding: 45px 20px 55px;
     }
 
     .event-grid {
         grid-template-columns: minmax(0, 521px);
-
         gap: 35px;
     }
 
@@ -457,262 +778,15 @@ a.card-link:hover {
     .event-content {
         font-size: clamp(18px, 4vw, 26px);
     }
-
 }
 
-/* newsletter focus effect */
-.newsletter:focus-within {
-    outline: 2px solid var(--accent-secondary);
-    outline-offset: 3px;
-};
-
-/* hidden labels for accessibility */
-
-.visually-hidden {
-    position: absolute;
-
-    width: 1px;
-    height: 1px;
-
-    overflow: hidden;
-    clip-path: inset(50%);
-
-    white-space: nowrap;
-}
-
-/* tablet footer */
-
+/* responsive footer */
 @media (max-width: 1180px) {
-
-    .footer-inner {
-        grid-template-columns: 1fr 2fr;
-    }
-
-    .newsletter {
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-    .footer-links {
-        grid-column: 2;
-        grid-row: 2;
-    }
-
-    .footer-links {
-        text-align: right;
-    }
-}
-
-/* mobile footer */
-
-@media (max-width: 700px) {
-
-    .footer-inner {
-        display: flex;
-        flex-direction: column;
-
-        align-items: stretch;
-
-        gap: 18px;
-        padding: 25px 18px;
-
-        text-align: center;
-    }
-
-    .footer-brand {
-        font-size: 28px;
-    }
-
-    .footer-address {
-        font-size: 20px;
-    }
-
-    .newsletter {
-        width: 100%;
-    }
-
-    .newsletter input {
-        font-size: 16px;
-    }
-
-    .newsletter button {
-        font-size: 18px;
-    }
-
-    .footer-links {
-        text-align: center;
-        white-space: normal;
-    }
-}
-
-/* footer */
-
-.site-footer {
-    min-height: var(--footer-height);
-
-    background-color: var(--bg-header);
-
-    border: 2px solid var(--accent-secondary);
-}
-
-/* footer layout */
-
-.footer-inner {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-
-    gap: 24px;
-
-    max-width: 1440px;
-    min-height: 122px;
-
-    margin: 0 auto;
-    padding: 16px 24px;
-}
-
-/* left side */
-
-.footer-left {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    justify-self: start;
-}
-
-.footer-brand {
-    margin: 0;
-
-    font-size: 33px;
-    font-weight: 600;
-}
-
-.footer-address {
-    margin: 0;
-
-    font-size: 24px;
-    letter-spacing: -0.08em;
-    line-height: 1.15;
-}
-
-/* center newsletter bar */
-
-.newsletter {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-
-    width: min(100%, 640px);
-    min-width: 320px;
-    height: 58px;
-
-    justify-self: center;
-
-    padding: 8px 150px 8px 18px;
-
-    border-radius: 16px;
-    background-color: var(--text-primary);
-
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
-}
-
-/* newsletter input */
-
-.newsletter input {
-    width: 100%;
-
-    border: none;
-    outline: none;
-    background: transparent;
-
-    color: var(--bg-header);
-
-    font-family: var(--font-body);
-    font-size: 22px;
-    letter-spacing: -0.04em;
-}
-
-/* lighter placeholder text */
-
-.newsletter input::placeholder {
-    color: rgba(13, 19, 31, 0.45);
-}
-
-/* button inside bar */
-
-.newsletter button {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-
-    transform: translateY(-50%);
-
-    height: 42px;
-    min-width: 118px;
-
-    border: none;
-    border-radius: 999px;
-
-    background-color: var(--bg-primary);
-    color: var(--text-heading);
-
-    font-family: var(--font-body);
-    font-size: 22px;
-    font-weight: 500;
-    letter-spacing: -0.03em;
-
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        filter 0.2s ease;
-}
-
-/* button hover */
-
-.newsletter button:hover {
-    transform: translateY(-50%) scale(1.03);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.24);
-    filter: brightness(1.03);
-}
-
-/* right side links */
-
-.footer-links {
-    margin: 0;
-
-    justify-self: end;
-    text-align: right;
-
-    font-size: clamp(20px, 2vw, 30px);
-    letter-spacing: -0.08em;
-    white-space: nowrap;
-}
-
-/* accessibility */
-
-.visually-hidden {
-    position: absolute;
-
-    width: 1px;
-    height: 1px;
-
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-}
-
-/* tablet */
-
-@media (max-width: 1180px) {
-
     .footer-inner {
         grid-template-columns: 1fr;
         justify-items: center;
         text-align: center;
+        gap: 18px;
     }
 
     .footer-left {
@@ -721,105 +795,82 @@ a.card-link:hover {
     }
 
     .newsletter {
-        width: min(100%, 640px);
-        min-width: 0;
+        width: min(100%, 654px);
+        justify-self: center;
     }
 
     .footer-links {
         justify-self: center;
         text-align: center;
     }
-
 }
 
-/* minimalistic scrollbar */
-
-html {
-    scrollbar-width: thin;
-    scrollbar-color: #415a77 #0d131f;
-}
-
-/* chrome, edge and safari */
-
-html::-webkit-scrollbar {
-    width: 6px;
-}
-
-html::-webkit-scrollbar-track {
-    background: var(--bg-header);
-}
-
-html::-webkit-scrollbar-thumb {
-    background: var(--bg-secondary);
-    border-radius: 10px;
-}
-
-html::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-secondary);
-}
-
-/* mobile */
-
+/* mobile styling */
 @media (max-width: 700px) {
-
-    .footer-inner {
-        padding: 22px 18px;
-        gap: 18px;
+    .header-inner {
+        padding: 20px 14px;
     }
 
-    .footer-brand {
-        font-size: 28px;
+    .brand { gap: 12px; }
+    .brand-name { font-size: clamp(18px, 5vw, 30px); }
+    .logo-backdrop { width: 55px; height: 55px; }
+    .brand-logo { width: 45px; height: 45px; }
+
+    .main-nav {
+        gap: 12px;
+        flex-wrap: wrap;
     }
 
-    .footer-address {
-        font-size: 20px;
-    }
+    .main-nav a { font-size: 20px; }
+    .main-nav a + a { padding-left: 12px; }
 
-    .newsletter {
-        height: 54px;
-        padding: 8px 118px 8px 14px;
-    }
+    .home-main { padding: 35px 16px 45px; }
+    .event-content { padding: 15px 12px; }
 
-    .newsletter input {
-        font-size: 16px;
-    }
+    .booking-card { padding: 24px 18px; min-height: 0; }
+    .booking-card h2 { font-size: 30px; }
+    .ticket-list { font-size: clamp(20px, 4.5vw, 26px); }
+    .calendar-icon { width: 30px; height: 30px; right: 15px; }
+    .step-placeholder { font-size: 20px; }
+    .step-label { font-size: 19px; }
+    .step-input, .step-enter { font-size: 18px; }
 
-  .newsletter button {
-    min-width: 125px;
-    height: 44px;
-    border-radius: 999px;
-}
-
-    .footer-links {
-        font-size: 22px;
-        white-space: normal;
-    }
-
+    .footer-inner { padding: 22px 18px; gap: 18px; }
+    .footer-brand { font-size: 28px; }
+    .footer-address { font-size: 20px; }
+    .newsletter { height: 54px; padding: 8px 118px 8px 14px; }
+    .newsletter input { font-size: 16px; }
+    .newsletter button { min-width: 95px; height: 36px; font-size: 18px; }
+    .footer-links { font-size: 22px; white-space: normal; }
 }
 
 /* reduced motion accessibility */
-
 @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
 
     .logo-backdrop,
     .brand-name,
-    .main-nav a {
-        transition: none;
-    }
-
-    .brand:hover .logo-backdrop {
-        transform: none;
-    }
-
+    .main-nav a,
     .event-card,
-    .event-image {
+    .event-image,
+    .twitch-icon,
+    .booking-card,
+    .ticket-option,
+    .event-option,
+    .newsletter button,
+    .booking-stage,
+    .booking-success,
+    .confirmation-icon {
         transition: none;
+        animation: none;
     }
 
+    .brand:hover .logo-backdrop,
     .event-card:hover,
-    .event-card:hover .event-image {
+    .event-card:hover .event-image,
+    .booking-card:hover,
+    .ticket-option:hover,
+    .twitch-link:hover .twitch-icon {
         transform: none;
     }
-
 }
-
