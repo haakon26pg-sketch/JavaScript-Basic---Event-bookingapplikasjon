@@ -156,7 +156,7 @@ let ticketQuality = 0;
 
 // function to update ticket summary
 
-function updateTicketSumamry() {
+function updateTicketSummary() {
 
     if (selectedTicket === null) {
         return;
@@ -218,9 +218,8 @@ function selectTicket(button) {
         }
     });
 
-    // show the ticket amount staged
-    stagePrompt.hidden = true;
-    stageAmount.hidden = false;
+// show the ticket amount stage
+showBookingStage("amount");
 
     // preserve the current quantity if one is selected
     ticketQuantity = Number(ticketAmount.value) || 0;
@@ -262,16 +261,237 @@ ticketAmount.addEventListener("change", function() {
 
 });
 
-// prevent booking form from reloading page
+// booking form and validation
 
-console.log("Booking form:", bookingForm);
+// selet remaining booking stages
+
+const stageEmail = document.querySelector("#stage-email");
+const stageName = document.querySelector("#stage-name");
+const stageSummary = document.querySelector("#stage-summary");
+
+// select customer input
+
+const customerEmail = document.querySelector("#customer-email");
+const customerName = document.querySelector("#customer-name");
+
+// select error and confirmation elements
+
+const stepError = document.querySelector("#step-error");
+const successRecap = document.querySelector("#success-recap");
+const newBookingButton = document.querySelector("#new-booking-button");
+
+// track current booking stage
+
+let currentBookingStage = "prompt";
+
+/* function to switch between booking stages */
+
+function showBookingStage(step) {
+
+    /* hide every stage first */
+
+    stagePrompt.hidden = true;
+    stageAmount.hidden = true;
+    stageEmail.hidden = true;
+    stageName.hidden = true;
+    stageSummary.hidden = true;
+
+    /* display the correct stage */
+
+    if (step === "prompt") {
+
+        stagePrompt.hidden = false;
+
+    } else if (step === "amount") {
+
+        stageAmount.hidden = false;
+
+    } else if (step === "email") {
+
+        stageEmail.hidden = false;
+        customerEmail.focus();
+
+    } else if (step === "name") {
+
+        stageName.hidden = false;
+        customerName.focus();
+
+    } else if (step === "summary") {
+
+        stageSummary.hidden = false;
+
+    }
+
+    /* remember current stage */
+
+    currentBookingStage = step;
+
+    /* clear previous error messages */
+
+    stepError.hidden = true;
+}
+
+// function to display validation error
+
+function showBookingError(message) {
+
+    stepError.textContent = message;
+    stepError.hidden = false;
+
+}
+
+// handle booking for submit
 
 bookingForm.addEventListener("submit", function(event) {
+
+    // prevent page reload
+
     event.preventDefault();
+
+    // stage 1: validate ticket quantity
+
+    if (currentBookingStage === "amount") {
+
+        const amount = Number(ticketAmount.value);
+
+        if (
+            !selectedTicket ||
+            !Number.isInteger(amount) ||
+            amount < 1 ||
+            amount > 5
+        ) {
+
+            showBookingError("Please select between 1 and 5 tickets.");
+        
+        }
+
+        ticketQuantity = amount;
+
+        updateTicketSummary();
+
+        showBookingStage("email");
+
+        // stage 2: validate email
+
+    } else if (currentBookingStage === "email") {
+
+        const email = customerEmail.value.trim();
+
+        if (email === "" || !customerEmail.checkValidity()) {
+
+            showBookingError("Please enter a valid email address.");
+            return;
+        
+        }
+
+        showBookingStage("name");
+
+
+    // stage 3 - validate full name
+
+    } else if (currentBookingStage === "name") {
+
+        const fullName = customerName.value.trim();
+
+        if(fullName.length < 2) {
+
+            showBookingError("Please enter your full name.");
+            return;
+        }
+
+        updateTicketSummary();
+        
+        showBookingStage("summary");
+
+        // stage 4 confirm booking
+    
+    } else if(currentBookingStage === "summary") {
+
+        // an event must be selected
+
+        if (selectedEvent === null) {
+
+            showDates();
+
+            showBookingError(
+                "Please select an event from Dates & Events."
+            );
+
+            return;
+        
+        }
+            // calculate final price
+
+        const totalPrice =
+                selectedTicket.price * ticketQuantity;
+
+                // create booking confirmation text
+
+                successRecap.textContent =
+                `Order Confirmed! ${customerName.value.trim()}, ` +
+                `you booked ${ticketQuantity} x ${selectedTicket.name}` +
+                `for ${selectedEvent.name}. ` +
+                `Total: ${totalPrice.toLocaleString("nb-NO")} NOK.`;
+
+                // replace two cards with success screen
+
+                homeView.hidden = true;
+                successView.hidden = false;
+
+                // move keyboard focus to confirmed order
+
+                successView.querySelector("h1").focus();
+
+    }
+
 });
 
-bookingForm.addEventListener("submit", function(event) {
+// start new booking
 
-    event.preventDefault();
+newBookingButton.addEventListener("click", function() {
+
+    // resert form inputs
+
+    bookingForm.reset();
+
+    // reset stored booking info
+
+    selectedTicket = null;
+    selectedEvent = null;
+    ticketQuantity = 0;
+
+    // remove selected ticket highlights
+
+    ticketOptions.forEach(function(button) {
+
+        button.setAttribute("aria-pressed", "false");
+    });
+
+    // remove selected event higlights
+
+    eventOptions.forEach(function(button) {
+
+        button.setAttribute("aria-pressed", "false");
+    });
+
+    // hide previous selections
+
+    ticketSummary.hidden = true;
+    selectedEventDisplay.hidden = true;
+
+    // reset booking summary
+
+    summaryEvent.textContent = "—"
+    summaryTicket.textContent = "—"
+    summaryQuantity.textContent = "—"
+    summaryTotal.textContent = "0 NOK";
+
+    // return form to starting stage
+
+    showBookingStage("prompt");
+
+    // restore homepage cards
+
+    showHome();
 
 });
